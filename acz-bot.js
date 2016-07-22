@@ -103,7 +103,7 @@ var commonNumbers = {
 		sendToClient(inputText);
 	        if(inputText.substring(0,1)=="/")
 	        {
-	                var command = inputText.split(" ")	;
+	                var splitCommand = inputText.split(" ")	;
 			var command = splitCommand[0];	        
 			splitCommand.shift();
 			switch(command)
