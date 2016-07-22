@@ -1,4 +1,4 @@
- module['exports'] = function echoBot (hook) {
+module['exports'] = function echoBot (hook) {
    
     function logger(message) {
     	sendToClient(message);
@@ -116,10 +116,7 @@ var commonNumbers = {
 		} else {
 			logger("Unable to understand what you sent. Please send Block-FlatNumber (ex: AB-101) \n (" + hook.params.message.text + ")");
 		}
-		else
-		{
-			
-		}
+		
 	} catch(ex) {
 		logger("Error " + ex.message);
     }  	
