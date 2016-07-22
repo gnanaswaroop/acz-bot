@@ -37,6 +37,9 @@
 			
 			intercomNumber = intercomNumber + parseInt(flatNumber);
 			return "Intercom for " + inputText + " is " + intercomNumber;
+		}
+		else 
+			return "usage: /intercom <flatnumber> Example : /intercom AB-G01 or /intercom D-103";
     }
   
   	function sendToClient(message) {
