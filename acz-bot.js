@@ -112,6 +112,7 @@ var commonNumbers = {
 						break;
 				case "/help" :ret = help();
 						break;
+				default : ret=help();
 			}
 			sendToClient(ret);
 			return;
