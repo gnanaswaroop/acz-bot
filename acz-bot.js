@@ -14,12 +14,14 @@
     	var splitArr = inputText.split('-');
 		
 		if(splitArr != null && splitArr.length == 2) {
-			var blockName = splitArr[0];
+			var blockName = splitArr[0].toUpperCase();
 			var flatNumber = splitArr[1];
 		  
 			logger("Querying for Block - " + blockName + " Flat Number - " + flatNumber);
 			
 			var intercomNumber = blockToNumberCache[blockName];
+			if (intercomNumber == undefined)
+			return "is this a block ("+blockName+") in cyberzon really?";
 			
 			logger("Checking Flat floor for flat number " + flatNumber + " " + typeof(flatNumber));
 			// Identify ground floor flats. 
