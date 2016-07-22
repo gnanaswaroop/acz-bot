@@ -10,7 +10,8 @@
     {
     	if(isBlank(inputText))
     	return "usage: /intercom <flatnumber> Example : /intercom AB-G01 or /intercom D-103";
-    	
+	if(commonNumbers[inputText.toLowerCase()]!=undefined)  	
+		return "Intercom for " + inputText + " is " + commonNumbers[inputText.toLowerCase()];
     	var splitArr = inputText.split('-');
 		
 		if(splitArr != null && splitArr.length == 2) {
@@ -59,6 +60,19 @@
     	return "This is a Bot for Cyberzon common stuff. Right now it can get you intercom list. Try /intercom"
     }
 
+var commonNumbers = {
+	"apms" : "444# & 333#",
+	"nextel":"999# & 901#",
+	"beam" : "533#",
+	"maingate" : "101# & 502#",
+	"servicegate" : "517#",
+	"clubhouse":"555#",
+	"gym":"341#",
+	"mph":"550#",
+	"sampoorna":"350#",
+	"spa":"2366#",
+	"ourkidz":"513#"
+};
 	var blockToNumberCache = {
 		  "AB" : "22",
 		  "C" : "23",
