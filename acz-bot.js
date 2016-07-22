@@ -100,7 +100,7 @@ var commonNumbers = {
 		var request = require('request');
 		var inputText = hook.params.message.text;
 		var ret;
-		sendToClient(inputText);
+		
 	        if(inputText.substring(0,1)=="/")
 	        {
 	                var splitCommand = inputText.split(" ")	;
@@ -109,7 +109,9 @@ var commonNumbers = {
 			switch(command)
 			{
 				case "/intercom" : ret = intercomFlats(splitCommand.join(" "));
+						break;
 				case "/help" :ret = help();
+						break;
 			}
 			sendToClient(ret);
 			return;
