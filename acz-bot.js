@@ -22,7 +22,7 @@ module['exports'] = function echoBot (hook) {
 			
 			var intercomNumber = blockToNumberCache[blockName];
 			if (intercomNumber == undefined)
-			return "is this a block ("+blockName+") in cyberzon really?";
+			return "is this  ("+blockName+") really a block in cyberzon ?";
 			
 			logger("Checking Flat floor for flat number " + flatNumber + " " + typeof(flatNumber));
 			// Identify ground floor flats. 
