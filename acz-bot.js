@@ -57,7 +57,7 @@ module['exports'] = function echoBot (hook) {
     
     function help()
     {
-    	return "This is a Bot for Cyberzon common stuff. Right now it can get you intercom list. Try /intercom"
+    	return "This is the cyberzon Bot. Right now it can get you intercom list. Try /intercom"
     }
 
 var commonNumbers = {
