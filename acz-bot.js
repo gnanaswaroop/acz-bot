@@ -114,7 +114,7 @@ var commonNumbers = {
 			return;
 		} else {
 			logger("Unable to understand what you sent. Please send Block-FlatNumber (ex: AB-101) \n (" + hook.params.message.text + ")");
-		}}
+		}
 		else
 		{
 			
