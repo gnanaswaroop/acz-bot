@@ -38,7 +38,8 @@
 			intercomNumber = intercomNumber + parseInt(flatNumber);
 			return "Intercom for " + inputText + " is " + intercomNumber;
 		}
-		else 
+		else
+		
 			return "usage: /intercom <flatnumber> Example : /intercom AB-G01 or /intercom D-103";
     }
   
@@ -85,11 +86,12 @@
 		var ret;
 	        if(inputText.substring(0,1)=="/")
 	        {
-	              var command = inputText.split(" ")	;
+	                var command = inputText.split(" ")	;
 			var command = splitCommand[0];	        
+			splitCommand.shift();
 			switch(command)
 			{
-				case "/intercom" : ret = intercomFlats(splitCommand[1]);
+				case "/intercom" : ret = intercomFlats(splitCommand.join(" "));
 				case "/help" :ret = help();
 			}
 			sendToClient(ret);
