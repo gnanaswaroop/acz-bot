@@ -26,7 +26,7 @@ module['exports'] = function echoBot (hook) {
 			
 			logger("Checking Flat floor for flat number " + flatNumber + " " + typeof(flatNumber));
 			// Identify ground floor flats. 
-			if(flatNumber.substring(0, 1) === "G") {
+			if(flatNumber.substring(0, 1).toUpperCase() === "G") {
             	logger("Ground floor flat found");
 				intercomNumber = intercomNumber + "0";
 			} else {
