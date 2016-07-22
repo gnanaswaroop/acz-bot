@@ -1,7 +1,7 @@
  module['exports'] = function echoBot (hook) {
    
     function logger(message) {
-    	// sendToClient(message);
+    	sendToClient(message);
     }
     function isBlank(str) {
 	    return (!str || /^\s*$/.test(str));
@@ -100,6 +100,7 @@ var commonNumbers = {
 		var request = require('request');
 		var inputText = hook.params.message.text;
 		var ret;
+		sendToClient(inputText);
 	        if(inputText.substring(0,1)=="/")
 	        {
 	                var command = inputText.split(" ")	;
