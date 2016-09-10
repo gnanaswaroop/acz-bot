@@ -8,6 +8,7 @@ module['exports'] = function echoBot (hook) {
 	}
     function intercomFlats(inputText)
     {
+    	return"test in progress";
     	if(isBlank(inputText))
     	return "usage: /intercom <flatnumber> Example : /intercom AB-G01 or /intercom D-103";
 	if(commonNumbers[inputText.toLowerCase()]!=undefined)  	
