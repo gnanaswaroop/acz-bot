@@ -1,7 +1,7 @@
 module['exports'] = function echoBot (hook) {
    
     function logger(message) {
-    	sendToClient(message);
+    	//sendToClient(message);
     }
     function isBlank(str) {
 	    return (!str || /^\s*$/.test(str));
@@ -37,7 +37,8 @@ module['exports'] = function echoBot (hook) {
 				return " that is not a real floor";
 				if(floornum<1)
 				return "Ground floor in cyberzon starts with a G";
-				
+				if (blockName =="R"&&floornum>4)
+				return "Have you looked at R block? that has only 5 floors!!"
               	logger("Flat floor - " + flatNumber);
 				intercomNumber = intercomNumber + flatNumber.charAt(0); // for other floors just use the string as-is 
 				logger ("partial intercom number "+intercomNumber)
