@@ -32,13 +32,7 @@ module['exports'] = function echoBot (hook) {
             	logger("Ground floor flat found");
 				intercomNumber = intercomNumber + "0";
 			} else {
-				var floornum= parseInt(floor);
-				if(floornum!=floornum)
-				return "are you sure that ("+floor+") is a floor at cyberzon?";
-				if(floornum<1)
-				return "are you sure that ("+floor+") is a floor at cyberzon; ground floor at cyberzon starts with a G.";
-				if(blockName=="R" && floorNum>4)
-				return "R block has only 4 floors.";
+				
 				
               	logger("Flat floor - " + flatNumber);
 				intercomNumber = intercomNumber + flatNumber.charAt(0); // for other floors just use the string as-is 
