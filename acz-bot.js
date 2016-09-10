@@ -17,7 +17,7 @@ module['exports'] = function echoBot (hook) {
 		if(splitArr != null && splitArr.length == 2) {
 			var blockName = splitArr[0].toUpperCase();
 			var flatNumber = splitArr[1];
-		  
+		  	var originalFlatNumber = flatNumber;
 			logger("Querying for Block - " + blockName + " Flat Number - " + flatNumber);
 			
 			var intercomNumber = blockToNumberCache[blockName];
@@ -37,7 +37,9 @@ module['exports'] = function echoBot (hook) {
 			// Extract the rest of the string 
 			flatNumber = flatNumber.substring(1);
 			logger("Flat Number - " + flatNumber);
-			
+			var intFlat = parseInt(flatNumber);
+			if (intFlat = NaN)
+			return "Are you sure that this ("+originalFlatNumber+") is a flat Number? You should perhaps talk to RaviKiran";
 			intercomNumber = intercomNumber + parseInt(flatNumber);
 			return "Intercom for " + inputText + " is " + intercomNumber;
 		}
