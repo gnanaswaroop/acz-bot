@@ -40,6 +40,7 @@ module['exports'] = function echoBot (hook) {
 				
               	logger("Flat floor - " + flatNumber);
 				intercomNumber = intercomNumber + flatNumber.charAt(0); // for other floors just use the string as-is 
+				logger ("partial intercom number "+intercomNumber)
 			}
 			
 			// Extract the rest of the string 
@@ -55,7 +56,7 @@ module['exports'] = function echoBot (hook) {
 			return "you should be looking for a flat in cyberZon .. not elsewhere";
 			if(intFlat<1)
 			return "flat Numbers start from 1";
-			intercomNumber = intercomNumber + parseInt(flatNumber);
+			intercomNumber = intercomNumber + intFlat;
 			return "Intercom for " + inputText + " is " + intFlat;
 		}
 		else
