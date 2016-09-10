@@ -42,11 +42,12 @@ module['exports'] = function echoBot (hook) {
 			
 			if (intFlat!=intFlat)
 			return "Are you sure that this ("+originalFlatNumber+") is a flat Number? You should perhaps talk to RaviKiran";
-			
+			if(flatNumber.length>3)
+				return "Are you sure that this ("+originalFlatNumber+") is a flat Number? You should perhaps talk to RaviKiran";
 			if(intFlat>15)
 			return "you should be looking for a flat in cyberZon .. not elsewhere";
 			if(intFlat<1)
-			return "flat Numbers start in 1";
+			return "flat Numbers start from 1";
 			intercomNumber = intercomNumber + parseInt(flatNumber);
 			return "Intercom for " + inputText + " is " + intFlat;
 		}
