@@ -40,7 +40,7 @@ module['exports'] = function echoBot (hook) {
 			logger("Flat Number - " + flatNumber);
 			var intFlat = parseInt(flatNumber);
 			
-			if (intFlat ===NaN)
+			if (intFlat!=intFlat)
 			return "Are you sure that this ("+originalFlatNumber+") is a flat Number? You should perhaps talk to RaviKiran";
 			intercomNumber = intercomNumber + parseInt(flatNumber);
 			return "Intercom for " + inputText + " is " + intFlat;
