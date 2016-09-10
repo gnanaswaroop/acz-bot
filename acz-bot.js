@@ -8,7 +8,7 @@ module['exports'] = function echoBot (hook) {
 	}
     function intercomFlats(inputText)
     {
-    	return"test in progress";
+    	
     	if(isBlank(inputText))
     	return "usage: /intercom <flatnumber> Example : /intercom AB-G01 or /intercom D-103";
 	if(commonNumbers[inputText.toLowerCase()]!=undefined)  	
@@ -39,10 +39,11 @@ module['exports'] = function echoBot (hook) {
 			flatNumber = flatNumber.substring(1);
 			logger("Flat Number - " + flatNumber);
 			var intFlat = parseInt(flatNumber);
+			return intFlat;
 			if (!(intFlat>=1&&intFlat<=15))
 			return "Are you sure that this ("+originalFlatNumber+") is a flat Number? You should perhaps talk to RaviKiran";
 			intercomNumber = intercomNumber + parseInt(flatNumber);
-			return "Intercom for " + inputText + " is " + intercomNumber;
+			return "Intercom for " + inputText + " is " + intFlat;
 		}
 		else
 		
