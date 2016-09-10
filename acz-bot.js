@@ -27,10 +27,19 @@ module['exports'] = function echoBot (hook) {
 			
 			logger("Checking Flat floor for flat number " + flatNumber + " " + typeof(flatNumber));
 			// Identify ground floor flats. 
+			var floor = flatNumber.charAt(0)
 			if(flatNumber.substring(0, 1).toUpperCase() === "G") {
             	logger("Ground floor flat found");
 				intercomNumber = intercomNumber + "0";
 			} else {
+				var floornum= parseInt(floor);
+				if(floornum!=floornum)
+				return "are you sure that ("+floor+") is a floor at cyberzon?";
+				if(floornum<1)
+				return "are you sure that ("+floor+") is a floor at cyberzon; ground floor at cyberzon starts with a G.";
+				if(blockName=="R" && floorNum>4)
+				return "R block has only 4 floors.";
+				
               	logger("Flat floor - " + flatNumber);
 				intercomNumber = intercomNumber + flatNumber.charAt(0); // for other floors just use the string as-is 
 			}
@@ -42,7 +51,7 @@ module['exports'] = function echoBot (hook) {
 			
 			if (intFlat!=intFlat)
 			return "Are you sure that this ("+originalFlatNumber+") is a flat Number? You should perhaps talk to RaviKiran";
-			if(flatNumber.length>3)
+			if(flatNumber.length>2)
 				return "Are you sure that this ("+originalFlatNumber+") is a flat Number? You should perhaps talk to RaviKiran";
 			if(intFlat>15)
 			return "you should be looking for a flat in cyberZon .. not elsewhere";
