@@ -29,10 +29,14 @@ module['exports'] = function echoBot (hook) {
 			// Identify ground floor flats. 
 			var floor = flatNumber.charAt(0)
 			if(flatNumber.substring(0, 1).toUpperCase() === "G") {
-            	logger("Ground floor flat found");
+            			logger("Ground floor flat found");
 				intercomNumber = intercomNumber + "0";
 			} else {
-				
+				var floornum = parseInt(floor);
+				if (floornum!=floornum)
+				return " that is not a real floor";
+				if(floornum<1)
+				return "Ground floor in cyberzon starts with a G";
 				
               	logger("Flat floor - " + flatNumber);
 				intercomNumber = intercomNumber + flatNumber.charAt(0); // for other floors just use the string as-is 
