@@ -57,7 +57,7 @@ module['exports'] = function echoBot (hook) {
 			if(intFlat<1)
 			return "flat Numbers start from 1";
 			intercomNumber = intercomNumber + intFlat;
-			return "Intercom for " + inputText + " is " + intFlat;
+			return "Intercom for " + inputText + " is " + intercomNumber;
 		}
 		else
 		
