@@ -34,7 +34,7 @@ module['exports'] = function echoBot (hook) {
 			} else {
 				var floornum = parseInt(floor);
 				if (floornum!=floornum)
-				return " that is not a real floor";
+				return " that is not a real flat - "+originalFlatNumber;
 				if(floornum<1)
 				return "Ground floor in cyberzon starts with a G";
 				if (blockName =="R"&&floornum>4)
