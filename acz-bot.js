@@ -53,7 +53,7 @@ module['exports'] = function echoBot (hook) {
 			return "Are you sure that this ("+originalFlatNumber+") is a flat Number? You should perhaps talk to RaviKiran";
 			if(flatNumber.length>2)
 				return "Are you sure that this ("+originalFlatNumber+") is a flat Number? You should perhaps talk to RaviKiran";
-			if(intFlat>15)
+			if(intFlat>blockToflatsCache[blockName])
 			return "you should be looking for a flat in cyberZon .. not elsewhere";
 			if(intFlat<1)
 			return "flat Numbers start from 1";
@@ -116,6 +116,29 @@ var commonNumbers = {
 		  "S" : "74",
 		  "T" : "81",
 		  "U" : "82"
+	};
+	
+	var blockToflatsCache = {
+		  "AB" : 10,
+		  "C" : 4,
+		  "D" : 3,
+		  "E" : 10,
+		  "F" : 8,
+		  "G" : 10,
+		  "H" : 10,
+		  "I" : 10,
+		  "J" : 10,
+		  "K" : 10,
+		  "L" : 10,
+		  "M" : 10,
+		  "N" : 10,
+		  "O" : 10,
+		  "P" : 10,
+		  "Q" : 10,
+		  "R" : 4,
+		  "S" : 10,
+		  "T" : 10,
+		  "U" : 10
 	};
   
 	try {
