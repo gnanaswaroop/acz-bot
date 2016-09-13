@@ -16,7 +16,16 @@ module['exports'] = function echoBot (hook) {
 	if(commonNumbers[inputText.toLowerCase()]!=undefined)  	
 		return "Intercom for " + inputText + " is " + commonNumbers[inputText.toLowerCase()];
     	var splitArr = inputText.split('-');
-		
+		if(splitArr!=null & splitArr.length!=2)
+		{
+			var a = " ";
+			for (var k in commonNumbers)
+			{
+				a+=k;
+				a+=", ";
+			}
+			return "i know the numbers for these "+a+" and can also tell you intercom for each flat";
+		}
 		if(splitArr != null && splitArr.length == 2) {
 			var blockName = splitArr[0].toUpperCase();
 			var flatNumber = splitArr[1];
