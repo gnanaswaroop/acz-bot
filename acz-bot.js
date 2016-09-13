@@ -100,7 +100,8 @@ var commonNumbers = {
 	"mph":"550#",
 	"sampoorna":"350#",
 	"spa":"2366#",
-	"ourkidz":"513#"
+	"ourkidz":"513#",
+	"logistics", "talk to the spammer abhishek"
 };
 	var blockToNumberCache = {
 		  "AB" : "22",
