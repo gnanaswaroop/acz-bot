@@ -24,7 +24,7 @@ module['exports'] = function echoBot (hook) {
 				a+=k;
 				a+=", ";
 			}
-			return "i know the numbers for these "+a+" and can also tell you intercom for each flat";
+			return "i know the numbers for these : "+a+" and can also tell you intercom for each flat";
 		}
 		if(splitArr != null && splitArr.length == 2) {
 			var blockName = splitArr[0].toUpperCase();
