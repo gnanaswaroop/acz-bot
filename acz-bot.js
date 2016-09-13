@@ -102,7 +102,7 @@ var commonNumbers = {
 	"nextel":"999# & 901#",
 	"beam" : "533#",
 	"maingate" : "101# & 502#",
-	"main gate" : "101# & 502#",
+	
 	"foodcourt" : "552# & 553#",
 	"restaurant" : "552# & 553#",
 	"servicegate" : "517#",
