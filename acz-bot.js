@@ -11,6 +11,8 @@ module['exports'] = function echoBot (hook) {
     	
     	if(isBlank(inputText))
     	return "usage: /intercom <flatnumber> Example : /intercom AB-G01 or /intercom D-103";
+    	if(inputText.toUpperCase()=="DIL")
+    	return "mere paas dil hei ...";
 	if(commonNumbers[inputText.toLowerCase()]!=undefined)  	
 		return "Intercom for " + inputText + " is " + commonNumbers[inputText.toLowerCase()];
     	var splitArr = inputText.split('-');
