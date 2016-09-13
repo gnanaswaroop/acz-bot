@@ -101,7 +101,7 @@ var commonNumbers = {
 	"sampoorna":"350#",
 	"spa":"2366#",
 	"ourkidz":"513#",
-	"logistics" : "talk to the spammer abhishek at 4168"
+	"logistics" : "4168 : talk to the spammer abhishek at 4168"
 };
 	var blockToNumberCache = {
 		  "AB" : "22",
