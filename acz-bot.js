@@ -167,7 +167,7 @@ var commonNumbers = {
 		
 	        if(inputText.substring(0,1)=="/")
 	        {
-	                var splitCommand = inputText.split("\s+")	;
+	                var splitCommand = inputText.split(" ")	;
 			var command = splitCommand[0].toLowerCase();	        
 			splitCommand.shift();
 			switch(command)
