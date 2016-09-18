@@ -8,7 +8,7 @@ module['exports'] = function echoBot (hook) {
 	}
     function intercomFlats(inputText)
     {
-    	
+    	inputText=inputText.trim();	
     	if(isBlank(inputText))
     	return "usage: /intercom <flatnumber> Example : "; //""+"/intercom AB-G01"+""" or """+"/intercom D-103"+"""";
     	if(inputText.toUpperCase()=="DIL")
