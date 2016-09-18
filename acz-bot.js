@@ -11,8 +11,8 @@ module['exports'] = function echoBot (hook) {
     	inputText=inputText.trim();	
     	if(isBlank(inputText))
     	return "Please read the message and type the commands. Do not click on the links in the message. \n\n"+
-    	"You can get the intercom for a flat by typing in  \"/intercom <flatnumber>\" Example : \'/intercom AB-G01\' or \"/intercom D-103\" "+
-    	"\n The bot will respond with the flat number for the flat.\n\n\"Intercom for D-103 is 3113\" \n\n You can also get the flat number for facilities by typing in the name of the facility. example : \"intercom sampoorna\" will get you the intercom for sampoorna.";
+    	"You can get the intercom for a flat by typing in  \"/intercom <flatnumber>\" Example : \n\n\"/intercom D-103\" \n"+
+    	"\n The bot will respond with the flat number for the flat.\n\n\"Intercom for D-103 is 3113\" \n\n You can also get the flat number for facilities by typing in the name of the facility. example : \"/intercom sampoorna\" will get you the intercom for sampoorna.";
     	if(inputText.toUpperCase()=="DIL")
     	return "mere paas dil hei ...";
 	if(commonNumbers[inputText.toLowerCase()]!=undefined)  	
