@@ -18,9 +18,9 @@ module['exports'] = function echoBot (hook) {
     	return "mere paas dil hei ...";
 	if(commonNumbers[inputText.toLowerCase()]!=undefined)  	
 		return "Intercom for " + inputText + " is " + commonNumbers[inputText.toLowerCase()];
-		
+		modText=inputText.replace(/\s+/g,"");
 		var flatregex = /([a-zA-Z]+)([\-]|\s+)*([g1-9][0-9][0-9])/g;
-		var match = flatregex.exec(inputText);
+		var match = flatregex.exec(modText);
  		if(match==null)
 		{
 			var a = " ";
