@@ -1,7 +1,7 @@
 module['exports'] = function echoBot (hook) {
    
     function logger(message) {
-    	sendToClient(message);
+    //	sendToClient(message);
     }
     function isBlank(str) {
 	    return (!str || /^\s*$/.test(str));
@@ -33,7 +33,7 @@ module['exports'] = function echoBot (hook) {
 		}
 		if(match!=null) {
 			
-			var blockName = match[1].toUpperString();
+			var blockName = match[1].toUpperCase();
 			var flatNumber = match[3];
 		  	var originalFlatNumber = flatNumber;
 			logger("Querying for Block - " + blockName + " Flat Number - " + flatNumber);
