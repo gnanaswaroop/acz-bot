@@ -10,6 +10,8 @@ module['exports'] = function echoBot (hook) {
     {
     	inputText=inputText.trim();	
     	inputText = inputText.toLowerCase();
+    	inputText = inputText.replace("for ","");
+    	inputText = inputText.trim();
     	if(isBlank(inputText))
     	return "Please read the message and type the commands. Do not click on the links in the message. \n\n"+
     	"You can get the intercom for a flat by typing in  \"/intercom <flatnumber>\" Example : \n\n\"/intercom D-103\" \n"+
