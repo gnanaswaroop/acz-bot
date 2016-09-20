@@ -1,7 +1,7 @@
 module['exports'] = function echoBot (hook) {
    
     function logger(message) {
-    	//sendToClient(message);
+    	sendToClient(message);
     }
     function isBlank(str) {
 	    return (!str || /^\s*$/.test(str));
@@ -32,6 +32,7 @@ module['exports'] = function echoBot (hook) {
 			return "i know the numbers for these : "+a+" and can also tell you intercom for each flat";
 		}
 		if(match!=null) {
+			logger(match[1]+match[3]);
 			var blockName = match[1];
 			var flatNumber = match[3];
 		  	var originalFlatNumber = flatNumber;
