@@ -9,6 +9,7 @@ module['exports'] = function echoBot (hook) {
     function intercomFlats(inputText)
     {
     	inputText=inputText.trim();	
+    	inputText = inputText.toLowerCase();
     	if(isBlank(inputText))
     	return "Please read the message and type the commands. Do not click on the links in the message. \n\n"+
     	"You can get the intercom for a flat by typing in  \"/intercom <flatnumber>\" Example : \n\n\"/intercom D-103\" \n"+
@@ -17,8 +18,10 @@ module['exports'] = function echoBot (hook) {
     	return "mere paas dil hei ...";
 	if(commonNumbers[inputText.toLowerCase()]!=undefined)  	
 		return "Intercom for " + inputText + " is " + commonNumbers[inputText.toLowerCase()];
-    	var splitArr = inputText.split('-');
-		if(splitArr!=null & splitArr.length!=2)
+		
+		var flatregex = /([a-zA-Z]+)([\-]|\s+)*([g1-9][0-9][0-9])/g;
+		var match = flatregex.exec(inputText);
+ 		if(match==null)
 		{
 			var a = " ";
 			for (var k in commonNumbers)
@@ -28,9 +31,9 @@ module['exports'] = function echoBot (hook) {
 			}
 			return "i know the numbers for these : "+a+" and can also tell you intercom for each flat";
 		}
-		if(splitArr != null && splitArr.length == 2) {
-			var blockName = splitArr[0].toUpperCase();
-			var flatNumber = splitArr[1];
+		if(match!=null) {
+			var blockName = match[1];
+			var flatNumber = match[3];
 		  	var originalFlatNumber = flatNumber;
 			logger("Querying for Block - " + blockName + " Flat Number - " + flatNumber);
 			
