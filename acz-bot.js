@@ -32,8 +32,8 @@ module['exports'] = function echoBot (hook) {
 			return "i know the numbers for these : "+a+" and can also tell you intercom for each flat";
 		}
 		if(match!=null) {
-			logger(match[1]+match[3]);
-			var blockName = match[1];
+			
+			var blockName = match[1].toUpperString();
 			var flatNumber = match[3];
 		  	var originalFlatNumber = flatNumber;
 			logger("Querying for Block - " + blockName + " Flat Number - " + flatNumber);
