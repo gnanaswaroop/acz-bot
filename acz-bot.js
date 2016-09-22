@@ -102,7 +102,9 @@ module['exports'] = function echoBot (hook) {
     
     function help()
     {
-    	return "This is the cyberzon Bot. Right now it can get you intercom list. Try /intercom"
+    		return "Please read the message and type the commands. Do not click on the links in the message. \n\n"+
+    	"You can get the intercom for a flat by typing in  \"/intercom <flatnumber>\" Example : \n\n\"/intercom D-103\" \n"+
+    	"\n The bot will respond with the flat number for the flat.\n\n\"Intercom for D-103 is 3113\" \n\n You can also get the flat number for facilities by typing in the name of the facility. example : \"/intercom sampoorna\" will get you the intercom for sampoorna.";
     }
 
 var commonNumbers = {
