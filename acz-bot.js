@@ -182,7 +182,11 @@ var commonNumbers = {
 			splitCommand.shift();
 			switch(command)
 			{
-				case "/intercom" : ret = intercomFlats(splitCommand.join(" "));
+				case "/intercom" : 
+						ret = intercomFlats(splitCommand.join(" "));
+						break;
+				case "/toby" : 
+						ret = intercomFlats(splitCommand.join(" "));
 						break;
 				case "/help" :ret = help();
 						break;
