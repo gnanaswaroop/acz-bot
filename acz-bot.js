@@ -114,7 +114,7 @@ var commonNumbers = {
 	"maingate" : "101# & 502#",
 	
 	"foodcourt" : "552# & 553#",
-	"restaurant" : "552# & 553#",
+	"restaurant" : "552# & 553# , 040-67485666 , 8498812449",
 	"servicegate" : "517#",
 	"clubhouse":"555#",
 	"gym":"341#",
