@@ -238,7 +238,7 @@ var commonNumbers = {
 		
 		var contact = hook.params.message.contact;
 		
-			sendToClient(contact.first_name + " " + contact.phone_number);
+			//sendToClient(contact.first_name + " " + contact.phone_number);
 		
 		if(contact!=null && contact.first_name!=null){
 			memoriseName(contact.first_name, contact.phone_number);
