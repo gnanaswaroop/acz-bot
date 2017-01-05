@@ -246,7 +246,7 @@ var commonNumbers = {
 			//sendToClient(contact.first_name + " " + contact.phone_number);
 		
 		if(contact!=null && contact.first_name!=null){
-			memoriseName(contact.first_name.toLowerCase(), contact.phone_number);
+			memoriseName(contact.first_name.toLowerCase(), contact.phone_number,store);
 			
 		}
 	        if(inputText.substring(0,1)=="/")
