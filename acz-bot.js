@@ -222,7 +222,7 @@ var commonNumbers = {
 		var match = flatregex.exec(inputText);
 		//if(match!=null)
 		{
-			sendToClient(inputText);
+			sendToClient(hook.params.message);
 		}
 	        if(inputText.substring(0,1)=="/")
 	        {
