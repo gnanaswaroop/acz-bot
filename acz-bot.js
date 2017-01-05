@@ -1,7 +1,7 @@
 module['exports'] = function echoBot (hook) {
    
     function logger(message) {
-    	sendToClient(message);
+    //	sendToClient(message);
     }
     function isBlank(str) {
 	    return (!str || /^\s*$/.test(str));
@@ -16,13 +16,17 @@ module['exports'] = function echoBot (hook) {
 	
 	function memoriseName(name, number, store)
 	{
-		if(store.get(name==null)
+		if(store.get(name)==null)
 		{
 			store.set(name,number,
-		   			function(err,result){if(err) {
+		   			function(err,result){
+						if(err) {
 							logger("Saving payload error " + err.message);
 							return;
-							} else{sendToClient("Memorised that "+name);}
+							} 
+							else{
+								sendToClient("Memorised that "+name);
+							}
 					}
 				);
 		}
