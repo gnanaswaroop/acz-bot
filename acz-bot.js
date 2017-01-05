@@ -220,7 +220,7 @@ var commonNumbers = {
 		var ret;
 		var flatregex = /Hyundai/g;
 		var match = flatregex.exec(inputText);
-		if(match!=null)
+		//if(match!=null)
 		{
 			sendToClient(inputText);
 		}
