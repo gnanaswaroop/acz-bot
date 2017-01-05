@@ -27,12 +27,12 @@ module['exports'] = function echoBot (hook) {
 	{
 		a= store.get(key,function(err,result){
 							if(result==null)
-							{	sendToClient("old number");
+							{	
 								sendToClient(oldNumbers(key));
 							}
 							else
 							{
-								sendToClient(result);
+								sendToClient("Phone Number for "+key+" is " +result);
 							}
 							
 							});
