@@ -11,16 +11,24 @@ module['exports'] = function echoBot (hook) {
 		inputText=inputText.trim();
 		inputText = inputText.toLowerCase();
 		var splitCommand = inputText.split(" ")	;
-		if(store.get(splitCommand[0])==null)
+		memoriseName(splitCommand[0],splitCommand[1],store);
+	}
+	
+	function memoriseName(name, number, store)
+	{
+		if(store.get(name==null)
 		{
-			store.set(splitCommand[0],splitCommand[1],function(err,result){if(err) {
-			logger("Saving payload error " + err.message);
-			return;
-		} else{sendToClient("Memorised that");}});
+			store.set(name,number,
+		   			function(err,result){if(err) {
+							logger("Saving payload error " + err.message);
+							return;
+							} else{sendToClient("Memorised that "+name);}
+					}
+				);
 		}
 		else
 		{
-			sendToClient("this number is already memorised " + splitCommand[0]+" :");
+			sendToClient("this number is already memorised " + name+" :");
 		}
 	}
 	function getNumber(key,store)
@@ -221,10 +229,10 @@ var commonNumbers = {
 		//var flatregex = /Hyundai/g;
 		//var match = flatregex.exec(inputText);
 		//if(hook.params.type == "contact")
-		{
-			for (var name in hook.params.message.contact) {
-  sendToClient(name);
-}
+		
+		var contact = hook.params.message.contact;
+		if(contact!=null && contact.first_name!=null){
+			memoriseName(contact.first_name, contact.phone_number);
 			
 		}
 	        if(inputText.substring(0,1)=="/")
