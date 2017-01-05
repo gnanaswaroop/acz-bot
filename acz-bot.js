@@ -218,7 +218,12 @@ var commonNumbers = {
 		var inputText = hook.params.message.text;
 		var store = hook.datastore;
 		var ret;
-		
+		var flatregex = /Hyundai/g;
+		var match = flatregex.exec(inputText);
+		if(match!=null)
+		{
+			sendToClient(inputText);
+		}
 	        if(inputText.substring(0,1)=="/")
 	        {
 	                var splitCommand = inputText.split(" ")	;
