@@ -1,7 +1,7 @@
 module['exports'] = function echoBot (hook) {
    
     function logger(message) {
-    //	sendToClient(message);
+    	sendToClient("debug" + message);
     }
     function isBlank(str) {
 	    return (!str || /^\s*$/.test(str));
@@ -37,7 +37,9 @@ module['exports'] = function echoBot (hook) {
 	}
 	function getNumber(key,store)
 	{
+		logger("looking up for"+key);
 		a= store.get(key,function(err,result){
+							logger("inside call back");
 							if(result==null)
 							{	
 								sendToClient(oldNumbers(key));
