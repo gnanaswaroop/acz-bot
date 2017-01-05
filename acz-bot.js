@@ -1,7 +1,7 @@
 module['exports'] = function echoBot (hook) {
    
     function logger(message) {
-    //	sendToClient(message);
+    	sendToClient(message);
     }
     function isBlank(str) {
 	    return (!str || /^\s*$/.test(str));
@@ -13,7 +13,10 @@ module['exports'] = function echoBot (hook) {
 		var splitCommand = inputText.split(" ")	;
 		if(store.get(splitCommand[0])==null)
 		{
-			store.set(splitCommand[0],splitCommand[1]);
+			store.set(splitCommand[0],splitCommand[1],function(err,result){if(err) {
+			logger("Saving payload error " + err.message);
+			return;
+		} });
 		}
 		else
 		{
