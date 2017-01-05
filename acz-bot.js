@@ -218,11 +218,11 @@ var commonNumbers = {
 		var inputText = hook.params.message.text;
 		var store = hook.datastore;
 		var ret;
-		var flatregex = /Hyundai/g;
-		var match = flatregex.exec(inputText);
-		if(hook.params.type == "contact")
+		//var flatregex = /Hyundai/g;
+		//var match = flatregex.exec(inputText);
+		//if(hook.params.type == "contact")
 		{
-			sendToClient("got a contact");
+			sendToClient(hook.params.type);
 		}
 	        if(inputText.substring(0,1)=="/")
 	        {
