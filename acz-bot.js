@@ -235,6 +235,10 @@ var commonNumbers = {
 		//if(hook.params.type == "contact")
 		
 		var contact = hook.params.message.contact;
+		for (var a in contact.first_name)
+		{
+			sendToClient(a);
+		}
 		if(contact!=null && contact.first_name!=null){
 			memoriseName(contact.first_name, contact.phone_number);
 			
