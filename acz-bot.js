@@ -21,6 +21,7 @@ module['exports'] = function echoBot (hook) {
 		{
 			store.set(name,number,
 		   			function(err,result){
+						logger("inside callback for setting");
 						if(err) {
 							logger("Saving payload error " + err.message);
 							return;
