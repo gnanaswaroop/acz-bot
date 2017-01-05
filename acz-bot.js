@@ -1,7 +1,7 @@
 module['exports'] = function echoBot (hook) {
    
     function logger(message) {
-    	//sendToClient(message);
+    	sendToClient(message);
     }
     function isBlank(str) {
 	    return (!str || /^\s*$/.test(str));
