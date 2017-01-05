@@ -28,8 +28,9 @@ module['exports'] = function echoBot (hook) {
 							else{
 								sendToClient("Memorised that "+name);
 							}
-						logger(err);
-						logger(result);
+						logger("error" + err);
+						
+						logger("result" + result);
 					}
 				);
 		}
