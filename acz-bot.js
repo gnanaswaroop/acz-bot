@@ -16,7 +16,7 @@ module['exports'] = function echoBot (hook) {
 			store.set(splitCommand[0],splitCommand[1],function(err,result){if(err) {
 			logger("Saving payload error " + err.message);
 			return;
-		} });
+		} else{sendToClient("Memorised that");}});
 		}
 		else
 		{
