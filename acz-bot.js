@@ -1,7 +1,7 @@
 module['exports'] = function echoBot (hook) {
    
     function logger(message) {
-    	sendToClient(message);
+    	//sendToClient(message);
     }
     function isBlank(str) {
 	    return (!str || /^\s*$/.test(str));
@@ -25,7 +25,8 @@ module['exports'] = function echoBot (hook) {
 	}
 	function getNumber(key,store)
 	{
-		return store.get(key,function(err,result){sendToClient(result);});
+		a= store.get(key,function(err,result){sendToClient(result);});
+		sendToClient("store get returned " + a+"  :");
 	}
     function intercomFlats(inputText,store)
     {
