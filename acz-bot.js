@@ -25,7 +25,7 @@ module['exports'] = function echoBot (hook) {
 	}
 	function getNumber(key,store)
 	{
-		return store.get(key);
+		return store.get(key,function(err,result){sendToClient(result);});
 	}
     function intercomFlats(inputText,store)
     {
