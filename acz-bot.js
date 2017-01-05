@@ -25,8 +25,95 @@ module['exports'] = function echoBot (hook) {
 	}
 	function getNumber(key,store)
 	{
-		a= store.get(key,function(err,result){sendToClient(result);});
+		a= store.get(key,function(err,result){
+							if(err)
+							{	sendToClient("old number");
+								sendToClient(oldNumbers(key));
+							}
+							else
+							{
+								sendToClient(result);
+							}
+							
+							});
 		sendToClient("store get returned " + a+"  :");
+	}
+
+	function oldNumbers(inputText)
+	{
+		if(commonNumbers[inputText.toLowerCase()]!=undefined)  	
+		{
+			return "Intercom for " + inputText + " is " + commonNumbers[inputText.toLowerCase()];
+		}
+		modText=inputText.replace(/\s+/g,"");
+		var flatregex = /([a-zA-Z]+)([\-]|\s+)*([g1-9][0-9][0-9])$/g;
+		var match = flatregex.exec(modText);
+		if(match==null)
+		{
+			var a = " ";
+			for (var k in commonNumbers)
+			{
+				a+=k;
+				a+=", ";
+			}
+			return "i know the numbers for these : "+a+" and can also tell you intercom for each flat";
+		}
+		if(match!=null) {
+
+			var blockName = match[1].toUpperCase();
+			var flatNumber = match[3];
+			var originalFlatNumber = flatNumber;
+			logger("Querying for Block - " + blockName + " Flat Number - " + flatNumber);
+
+			var intercomNumber = blockToNumberCache[blockName];
+			if (intercomNumber == undefined)
+			return "is this  ("+blockName+") really a block in cyberzon ?";
+
+			logger("Checking Flat floor for flat number " + flatNumber + " " + typeof(flatNumber));
+			// Identify ground floor flats. 
+			if(flatNumber.trim().toUpperCase() =="SECURITY")
+			{
+				intercomNumber+="00";
+			return "Intercom for " + inputText + " is " + intercomNumber;	
+			}
+
+
+			var floor = flatNumber.charAt(0)
+			if(flatNumber.substring(0, 1).toUpperCase() === "G") {
+				logger("Ground floor flat found");
+				intercomNumber = intercomNumber + "0";
+			} else {
+				var floornum = parseInt(floor);
+				if (floornum!=floornum)
+				return " that is not a real flat - "+originalFlatNumber;
+				if(floornum<1)
+				return "Ground floor in cyberzon starts with a G";
+				if (blockName =="R"&&floornum>4)
+				return "Have you looked at R block? that has only 5 floors!!"
+		logger("Flat floor - " + flatNumber);
+				intercomNumber = intercomNumber + flatNumber.charAt(0); // for other floors just use the string as-is 
+				logger ("partial intercom number "+intercomNumber)
+			}
+
+			// Extract the rest of the string 
+			flatNumber = flatNumber.substring(1);
+			logger("Flat Number - " + flatNumber);
+			var intFlat = parseInt(flatNumber);
+
+			if (intFlat!=intFlat)
+			return "Are you sure that this ("+originalFlatNumber+") is a flat Number? You should perhaps talk to RaviKiran";
+			if(flatNumber.length>2)
+				return "Are you sure that this ("+originalFlatNumber+") is a flat Number? You should perhaps talk to RaviKiran";
+			if(intFlat>blockToflatsCache[blockName])
+			return "you should be looking for a flat in cyberZon .. not elsewhere";
+			if(intFlat<1)
+			return "flat Numbers start from 1";
+			intercomNumber = intercomNumber + intFlat;
+			return "Intercom for " + inputText + " is " + intercomNumber;
+		}
+		else
+
+			return "usage: /intercom <flatnumber> Example : /intercom AB-G01 or /intercom D-103";
 	}
     function intercomFlats(inputText,store)
     {
@@ -41,82 +128,11 @@ module['exports'] = function echoBot (hook) {
     	if(inputText.toUpperCase()=="DIL")
     	return "mere paas dil hei ...";
 	    var phoneNo = getNumber(inputText,store);
-	    if(phoneNo!=null)
-	    {
-		    return phoneNo;
-	    }
-	if(commonNumbers[inputText.toLowerCase()]!=undefined)  	
-		return "Intercom for " + inputText + " is " + commonNumbers[inputText.toLowerCase()];
-		modText=inputText.replace(/\s+/g,"");
-		var flatregex = /([a-zA-Z]+)([\-]|\s+)*([g1-9][0-9][0-9])$/g;
-		var match = flatregex.exec(modText);
- 		if(match==null)
-		{
-			var a = " ";
-			for (var k in commonNumbers)
-			{
-				a+=k;
-				a+=", ";
-			}
-			return "i know the numbers for these : "+a+" and can also tell you intercom for each flat";
-		}
-		if(match!=null) {
-			
-			var blockName = match[1].toUpperCase();
-			var flatNumber = match[3];
-		  	var originalFlatNumber = flatNumber;
-			logger("Querying for Block - " + blockName + " Flat Number - " + flatNumber);
-			
-			var intercomNumber = blockToNumberCache[blockName];
-			if (intercomNumber == undefined)
-			return "is this  ("+blockName+") really a block in cyberzon ?";
-			
-			logger("Checking Flat floor for flat number " + flatNumber + " " + typeof(flatNumber));
-			// Identify ground floor flats. 
-			if(flatNumber.trim().toUpperCase() =="SECURITY")
-			{
-				intercomNumber+="00";
-			return "Intercom for " + inputText + " is " + intercomNumber;	
-			}
-			
-			
-			var floor = flatNumber.charAt(0)
-			if(flatNumber.substring(0, 1).toUpperCase() === "G") {
-            			logger("Ground floor flat found");
-				intercomNumber = intercomNumber + "0";
-			} else {
-				var floornum = parseInt(floor);
-				if (floornum!=floornum)
-				return " that is not a real flat - "+originalFlatNumber;
-				if(floornum<1)
-				return "Ground floor in cyberzon starts with a G";
-				if (blockName =="R"&&floornum>4)
-				return "Have you looked at R block? that has only 5 floors!!"
-              	logger("Flat floor - " + flatNumber);
-				intercomNumber = intercomNumber + flatNumber.charAt(0); // for other floors just use the string as-is 
-				logger ("partial intercom number "+intercomNumber)
-			}
-			
-			// Extract the rest of the string 
-			flatNumber = flatNumber.substring(1);
-			logger("Flat Number - " + flatNumber);
-			var intFlat = parseInt(flatNumber);
-			
-			if (intFlat!=intFlat)
-			return "Are you sure that this ("+originalFlatNumber+") is a flat Number? You should perhaps talk to RaviKiran";
-			if(flatNumber.length>2)
-				return "Are you sure that this ("+originalFlatNumber+") is a flat Number? You should perhaps talk to RaviKiran";
-			if(intFlat>blockToflatsCache[blockName])
-			return "you should be looking for a flat in cyberZon .. not elsewhere";
-			if(intFlat<1)
-			return "flat Numbers start from 1";
-			intercomNumber = intercomNumber + intFlat;
-			return "Intercom for " + inputText + " is " + intercomNumber;
-		}
-		else
-		
-			return "usage: /intercom <flatnumber> Example : /intercom AB-G01 or /intercom D-103";
+	   
+	
     }
+	
+	
   
   	function sendToClient(message) {
       request
@@ -220,10 +236,11 @@ var commonNumbers = {
 						ret = memorise(splitCommand.join(" "),store);
 						break;
 				case "/help" :ret = help();
+					sendToClient(ret);
 						break;
 				default : ret=help();
 			}
-			sendToClient(ret);
+			//sendToClient(ret);
 			return;
 		} else {
 			logger("Unable to understand what you sent. Please send Block-FlatNumber (ex: AB-101) \n (" + hook.params.message.text + ")");
