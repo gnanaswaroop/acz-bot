@@ -26,7 +26,7 @@ module['exports'] = function echoBot (hook) {
 	function getNumber(key,store)
 	{
 		a= store.get(key,function(err,result){
-							if(err)
+							if(result==null)
 							{	sendToClient("old number");
 								sendToClient(oldNumbers(key));
 							}
