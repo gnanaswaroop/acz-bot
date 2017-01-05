@@ -222,7 +222,7 @@ var commonNumbers = {
 		var match = flatregex.exec(inputText);
 		//if(match!=null)
 		{
-			sendToClient(inputText);
+			sendToClient(inputText.Length());
 		}
 	        if(inputText.substring(0,1)=="/")
 	        {
