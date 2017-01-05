@@ -220,9 +220,9 @@ var commonNumbers = {
 		var ret;
 		var flatregex = /Hyundai/g;
 		var match = flatregex.exec(inputText);
-		//if(match!=null)
+		if(hook.params.type == "contact")
 		{
-			sendToClient(hook.params.contact);
+			sendToClient("got a contact");
 		}
 	        if(inputText.substring(0,1)=="/")
 	        {
