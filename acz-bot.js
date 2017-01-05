@@ -36,7 +36,7 @@ module['exports'] = function echoBot (hook) {
 							}
 							
 							});
-		sendToClient("store get returned " + a+"  :");
+		
 	}
 
 	function oldNumbers(inputText)
