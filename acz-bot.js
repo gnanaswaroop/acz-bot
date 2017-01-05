@@ -1,7 +1,7 @@
 module['exports'] = function echoBot (hook) {
    
     function logger(message) {
-    	//sendToClient("debug" + message);
+    	sendToClient("debug" + message);
     }
     function isBlank(str) {
 	    return (!str || /^\s*$/.test(str));
@@ -16,6 +16,7 @@ module['exports'] = function echoBot (hook) {
 	
 	function memoriseName(name, number, store)
 	{
+		logger("memorising" + name +":"+number);
 		if(store.get(name)==null)
 		{
 			store.set(name,number,
@@ -27,6 +28,8 @@ module['exports'] = function echoBot (hook) {
 							else{
 								sendToClient("Memorised that "+name);
 							}
+						logger(err);
+						logger(result);
 					}
 				);
 		}
