@@ -6,7 +6,25 @@ module['exports'] = function echoBot (hook) {
     function isBlank(str) {
 	    return (!str || /^\s*$/.test(str));
 	}
-    function intercomFlats(inputText)
+    function memorise(inputText,store)
+	{
+		inputText=inputText.trim();
+		inputText = inputText.toLowerCase();
+		var splitCommand = inputText.split(" ")	;
+		if(store.get(splitCommand[0])==null)
+		{
+			store.set(splitCommand[0],splitCommand[1]);
+		}
+		else
+		{
+			sendToClient("this number is already memorised " + splitCommand[0]+" :");
+		}
+	}
+	function getNumber(key,store)
+	{
+		return store.get(key);
+	}
+    function intercomFlats(inputText,store)
     {
     	inputText=inputText.trim();	
     	inputText = inputText.toLowerCase();
@@ -18,6 +36,11 @@ module['exports'] = function echoBot (hook) {
     	"\n The bot will respond with the flat number for the flat.\n\n\"Intercom for D-103 is 3113\" \n\n You can also get the flat number for facilities by typing in the name of the facility. example : \"/intercom sampoorna\" will get you the intercom for sampoorna.";
     	if(inputText.toUpperCase()=="DIL")
     	return "mere paas dil hei ...";
+	    var phoneNo = getNumber(inputText,store);
+	    if(phoneNo!=null)
+	    {
+		    return phoneNo;
+	    }
 	if(commonNumbers[inputText.toLowerCase()]!=undefined)  	
 		return "Intercom for " + inputText + " is " + commonNumbers[inputText.toLowerCase()];
 		modText=inputText.replace(/\s+/g,"");
@@ -173,6 +196,7 @@ var commonNumbers = {
 	try {
 		var request = require('request');
 		var inputText = hook.params.message.text;
+		var store = hook.datastore;
 		var ret;
 		
 	        if(inputText.substring(0,1)=="/")
@@ -183,10 +207,13 @@ var commonNumbers = {
 			switch(command)
 			{
 				case "/intercom" : 
-						ret = intercomFlats(splitCommand.join(" "));
+						ret = intercomFlats(splitCommand.join(" "),store);
 						break;
 				case "/toby" : 
 						ret = intercomFlats(splitCommand.join(" "));
+						break;
+				case "/remember" :
+						ret = memorise(splitCommand.join(" "),store);
 						break;
 				case "/help" :ret = help();
 						break;
