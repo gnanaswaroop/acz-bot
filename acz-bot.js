@@ -244,7 +244,7 @@ var commonNumbers = {
 		var contact = hook.params.message.contact;
 		
 			//sendToClient(contact.first_name + " " + contact.phone_number);
-		for (var a in hook.params.message)
+		for (var a in hook.params)
 		{
 			logger(a);
 		}
