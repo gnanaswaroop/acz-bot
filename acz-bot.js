@@ -244,7 +244,10 @@ var commonNumbers = {
 		var contact = hook.params.message.contact;
 		
 			//sendToClient(contact.first_name + " " + contact.phone_number);
-		
+		for (var a in hook.params.message)
+		{
+			logger(a);
+		}
 		if(contact!=null && contact.first_name!=null){
 			memoriseName(contact.first_name.toLowerCase(), contact.phone_number,store);
 			
