@@ -242,11 +242,11 @@ var commonNumbers = {
 		//if(hook.params.type == "contact")
 		
 		var contact = hook.params.message.contact;
-		
+		sendToClient("some message received");
 			//sendToClient(contact.first_name + " " + contact.phone_number);
 		for (var a in hook.params)
 		{
-			logger(a);
+			logger(" parameter  " + a);
 		}
 		if(contact!=null && contact.first_name!=null){
 			memoriseName(contact.first_name.toLowerCase(), contact.phone_number,store);
