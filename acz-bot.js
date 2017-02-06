@@ -65,7 +65,7 @@ module['exports'] = function echoBot (hook) {
 			return "Intercom for " + inputText + " is " + commonNumbers[inputText.toLowerCase()];
 		}
 		modText=inputText.replace(/\s+/g,"");
-		var flatregex = /([a-zA-Z]+)([\-]|\s+)*([g1-9][0-9][0-9])$/g;
+		var flatregex = /([a-zA-Z]+)([\-]|\s+)*([gG1-9][0-9][0-9])$/g;
 		var match = flatregex.exec(modText);
 		if(match==null)
 		{
@@ -242,7 +242,7 @@ var commonNumbers = {
 		//if(hook.params.type == "contact")
 		
 		var contact = hook.params.message.contact;
-		sendToClient("some message received");
+		//sendToClient("some message received");
 			//sendToClient(contact.first_name + " " + contact.phone_number);
 		for (var a in hook.params)
 		{
