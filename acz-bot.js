@@ -173,8 +173,7 @@ var commonNumbers = {
 	"apms" : "444# & 333#",
 	"nextel":"999# & 901#",
 	"beam" : "533#",
-	"maingate" : "101# & 502#",
-	
+	"maingate" : "In-gate 502# & Main-gate 101#",
 	"foodcourt" : "552# & 553#",
 	"restaurant" : "552# & 553# , 040-67485666 , 8498812449",
 	"servicegate" : "517#",
@@ -183,8 +182,8 @@ var commonNumbers = {
 	"mph":"550#",
 	"sampoorna":"350#",
 	"spa":"2366#",
-	"ourkidz":"513#"
-	
+	"ourkidz":"513#",
+	"medplus":"505#, 507# & 040-67485689 & 8317657989"	
 };
 	var blockToNumberCache = {
 		  "AB" : "22",
