@@ -2,6 +2,7 @@ module['exports'] = function aczBot(hook) {
 
 	function logger(message) {
 		//sendToClient("debug" + message);
+		console.log(message);
 	}
 
 	function isBlank(str) {
@@ -139,16 +140,16 @@ module['exports'] = function aczBot(hook) {
 	}
 
 
-
-	function sendToClient(message) {
-		request
-			.post('https://api.telegram.org/bot' + hook.env.CyberZon_bot_key + '/sendMessage')
-			.form({
-				"chat_id": hook.params.message.chat.id,
-				"text": message
-			});
-		hook.res.end();
+	
+	function sendToClient(finalText) {
+		var encodedKey = hook.env.acz_bot_key;
+		var url = 'https://api.telegram.org/bot' + encodedKey + '/sendMessage';
+		request.post(url).form({
+              			"chat_id": hook.params.message.chat.id,
+              			"text": finalText
+          		});
 	}
+
 
 	function help() {
 		return "Please read the message and type the commands. Do not click on the links in the message. \n\n" +
