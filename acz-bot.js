@@ -148,6 +148,7 @@ module['exports'] = function aczBot(hook) {
               			"chat_id": hook.params.message.chat.id,
               			"text": finalText
           		});
+		hook.res.end();
 	}
 
 
