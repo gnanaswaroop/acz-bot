@@ -2,7 +2,7 @@ module['exports'] = function aczBot(hook) {
 
 	function logger(message) {
 		//sendToClient("debug" + message);
-		console.log(message);
+		//console.log(message);
 	}
 
 	function isBlank(str) {
@@ -230,11 +230,13 @@ module['exports'] = function aczBot(hook) {
 		//if(hook.params.type == "contact")
 
 		var contact = hook.params.message.contact;
+		hook.res.end();
+
 		//sendToClient("some message received");
 		//sendToClient(contact.first_name + " " + contact.phone_number);
-		for (var a in hook.params) {
-			logger(" parameter  " + a);
-		}
+		//for (var a in hook.params) {
+		//	logger(" parameter  " + a);
+		//}
 		if (contact != null && contact.first_name != null) {
 			memoriseName(contact.first_name.toLowerCase(), contact.phone_number, store);
 
@@ -263,7 +265,7 @@ module['exports'] = function aczBot(hook) {
 			//sendToClient(ret);
 			return;
 		} else {
-			logger("Unable to understand what you sent. Please send Block-FlatNumber (ex: AB-101) \n (" + hook.params.message.text + ")");
+			logger("Unable to understand what you sent. Please send Block-FlatNumber (ex: AB-101) \n (" + inputText + ")");
 		}
 
 	} catch (ex) {
