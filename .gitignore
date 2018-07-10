@@ -1,0 +1,5 @@
+combined.log
+config.js
+node_modules/*
+.dockerignore
+Dockerfile
