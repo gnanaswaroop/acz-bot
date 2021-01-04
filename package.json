@@ -9,7 +9,6 @@
   "author": "Swaroop",
   "license": "ISC",
   "dependencies": {
-    "node-telegram-bot-api": "^0.30.0",
-    "winston": "^3.0.0-rc6"
+    "telegraf": "^3.33.3"
   }
 }
