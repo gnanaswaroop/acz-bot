@@ -65,36 +65,3 @@ bot.on("inline_query", async ctx => {
 });
 
 bot.launch();
-
-// bot.on('inline_query', async ({ inlineQuery, answerInlineQuery }) => {
-//   console.log(inlineQuery);
-//   const offset = parseInt(inlineQuery.offset) || 0
-//   items = []
-//   for(var i = 0; i < 100; i++) {
-//     items.push({ title: 'Item '+i, desc: 'item '+i+' desc', id: '0000'+i, moreinfo: 'More info about item'+i+', mucho importante information'})
-//   }
-//   results = items.slice(offset, offset+10).map((item) => ({
-//     type: "article",
-//     id: item.id,
-//     title: item.title,
-//     description: item.desc,
-//     input_message_content: {
-//       message_text: '*'+item.title+'*\n'+item.desc,
-//       parse_mode: 'Markdown'
-//     },
-//     reply_markup: {
-//         inline_keyboard: [
-//           [{ text: 'More info', callback_data: 'moreinfo' }]
-//     ]},
-//     hide_url: true,
-//     url: '',
-//   }))
-//   return answerInlineQuery(results, {is_personal: true, next_offset: offset+results.length, cache_time: 10})
-// })
-
-/* what was selected from the inline query? */
-bot.on('chosen_inline_result', ctx => {
-  console.log('You chosed an inline query result')
-})
-
-// bot.launch()
