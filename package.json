@@ -1,6 +1,6 @@
 {
   "name": "aczbot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ACZ Bot",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,6 @@
   "author": "Swaroop",
   "license": "ISC",
   "dependencies": {
-    "node-telegram-bot-api": "^0.30.0",
-    "winston": "^3.0.0-rc6"
+    "telegraf": "^3.33.3"
   }
 }
