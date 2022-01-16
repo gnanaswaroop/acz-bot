@@ -23,7 +23,7 @@ class StaticNumbers {
             var isError = false;
             if (!res.statusCode == 200) {
                 isError = true;
-                console.log("Error fetching static numbers ");
+                console.log("Error fetching static numbers " + res.statusCode);
             }
             
             res.on("data", d => {
@@ -46,47 +46,33 @@ class StaticNumbers {
         var self = this;
         self.data = {};
 
-        var jsonBody = JSON.parse(body);
-        var allEntries = jsonBody['feed']['entry'];
+        var allEntries = JSON.parse(body);
 
         if(allEntries.length <= 0) {
             console.log('No static content found - Check the source');
             return;
         }
 
-        // JSON format doesn't store rows and columns separately and this has to be calculated
-        var columnsIndex = {};
-        var rowReference = []; // Temporary datastructure to aggregate row data from linear array. 
-
-        allEntries.map(function(eachEntry, index) {
-            var eachEntryData = eachEntry['gs$cell']; // This object contains data
-            var colInt = parseInt(eachEntryData.col);
-            var rowInt = parseInt(eachEntryData.row);
-            var cellValue = eachEntryData.inputValue;
-            if(rowInt === 1) {
-                // Treat as a column
-                columnsIndex[eachEntryData.col] = cellValue;
-            } else {
-                // Treat as data
-                var columnNameForCell = columnsIndex[colInt];
-                // Fetch the facility type and use it as a key
-                if(colInt === 1) {
-                    var newEntry = {};
-                    newEntry[columnNameForCell] = cellValue;
-                    self.data[cellValue] = newEntry;
-                    rowReference[rowInt] = newEntry;
-                } else {
-                    var oldEntry = rowReference[rowInt];
-                    oldEntry[columnNameForCell] = cellValue;
+        // Top level array 
+        allEntries.forEach(function(entry) {
+            var searchableEntry = {};
+            Object.entries(entry).forEach(([key, value], index) => {
+                // Ignore data if the key or value are blank 
+                if(value == '' || key == '') {
+                    return;
                 }
-            }
+
+                searchableEntry[key] = value;
+
+                if(index === 0) {
+                    self.data[value] = searchableEntry;
+                } 
+            });
         });
 
         self.isCacheInitialized = true;
         self.lastCachedInitializedAt = new Date();
         console.log(`Cache Initialized with ${Object.keys(self.data).length} entries at ${self.lastCachedInitializedAt}`);
-        // console.log(columnsIndex);
-        // console.log(self.data);
 
         // TODO: Change this to be at an odd time in the night to avoid recaching during the day. 
         console.log('Schedule to query after 5 mins');
